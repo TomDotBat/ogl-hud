@@ -61,8 +61,8 @@ for k,v in pairs(modules) do
     end)
 end
 
-OGLFramework.UI.RegisterFont("HUD.PlayerInfo", "Montserrat SemiBold", 25)
-OGLFramework.UI.RegisterFont("HUD.ServerName", "Montserrat SemiBold", 30)
+OGLFramework.UI.RegisterFont("HUD.PlayerInfo", "Montserrat SemiBold", 23)
+OGLFramework.UI.RegisterFont("HUD.ServerName", "Montserrat SemiBold", 27)
 
 local serverName = "OGL Network"
 
@@ -159,5 +159,5 @@ hook.Add("HUDPaint", "OGLHUD.PlayerInfo", function()
         draw.SimpleText(v.value, "OGL.HUD.PlayerInfo", v.pos + iconSize + iconSpacing * 2, contentY + contentH / 2, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
     end
 
-    draw.SimpleText(serverName, "OGL.HUD.ServerName", padding + barW - serverNameW - OGLFramework.UI.Scale(10), contentY + contentH * .46, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
+    draw.SimpleText(serverName, "OGL.HUD.ServerName", padding + barW - serverNameW - OGLFramework.UI.Scale(10), contentY + contentH * .45, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
 end)
