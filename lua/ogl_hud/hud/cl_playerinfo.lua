@@ -53,6 +53,24 @@ local modules = {
             return ply:getDarkRPVar("money")
         end
     },
+    {
+        name = "lockdown",
+        type = "icon",
+        color = OGLFramework.UI.ColourScheme.negative,
+        imgurID = "2lZmvvr",
+        getter = function(ply)
+            return GetGlobalBool("DarkRP_LockDown")
+        end
+    },
+    {
+        name = "wanted",
+        type = "icon",
+        color = OGLFramework.UI.ColourScheme.negative,
+        imgurID = "oymFsE9",
+        getter = function(ply)
+            return ply:getDarkRPVar("wanted")
+        end
+    }
 }
 
 for k,v in pairs(modules) do
@@ -76,6 +94,14 @@ hook.Add("HUDPaint", "OGLHUD.PlayerInfo", function()
     local statBarW = OGLFramework.UI.Scale(150)
     local iconSize = OGLFramework.UI.Scale(22)
     local iconSpacing = OGLFramework.UI.Scale(5)
+
+    local barH = OGLFramework.UI.Scale(50)
+    local barY = ScrH() - padding - barH
+    local overlineH = OGLFramework.UI.Scale(6)
+    local halfOverlineH = OGLFramework.UI.Scale(3)
+    local contentH = barH - halfOverlineH
+    local contentY = barY + halfOverlineH + contentH * .125
+    contentH = contentH * .75
 
     surface.SetFont("OGL.HUD.PlayerInfo")
     for k,v in ipairs(modules) do
@@ -101,6 +127,11 @@ hook.Add("HUDPaint", "OGLHUD.PlayerInfo", function()
 
             v.width = iconSize + iconSpacing * 3 + surface.GetTextSize(v.value)
             barW = barW + v.width + spacing
+        elseif v.type == "icon" then
+            v.noDraw = not v.getter(ply)
+            if v.noDraw then continue end
+
+            barW = barW + contentH + spacing
         elseif v.type == "num" then
             v.actualValue = Lerp(FrameTime() * 5, v.actualValue, v.getter(ply))
             v.value = math.Round(v.actualValue)
@@ -120,18 +151,8 @@ hook.Add("HUDPaint", "OGLHUD.PlayerInfo", function()
     local serverNameW = surface.GetTextSize(serverName)
     barW = barW + serverNameW
 
-    local barH = OGLFramework.UI.Scale(50)
-    local barY = ScrH() - padding - barH
-
     draw.RoundedBoxEx(OGLFramework.UI.Scale(6), padding, barY, barW, barH, OGLFramework.UI.ColourScheme.backgroundDarkerish, false, false, true, true)
-
-    local overlineH = OGLFramework.UI.Scale(6)
-    local halfOverlineH = OGLFramework.UI.Scale(3)
     draw.RoundedBox(halfOverlineH, padding, barY - halfOverlineH, barW, overlineH, OGLFramework.UI.ColourScheme.primary)
-
-    local contentH = barH - halfOverlineH
-    local contentY = barY + halfOverlineH + contentH * .125
-    contentH = contentH * .75
 
     local iconY = contentY + OGLFramework.UI.Scale(8)
 
@@ -147,6 +168,13 @@ hook.Add("HUDPaint", "OGLHUD.PlayerInfo", function()
             surface.DrawTexturedRect(v.pos + iconSpacing, iconY, iconSize, iconSize)
 
             draw.SimpleText(math.Round(v.value) .. "%", "OGL.HUD.PlayerInfo", v.pos + iconSize + iconSpacing * 2, contentY + contentH / 2, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
+            continue
+        elseif v.type == "icon" then
+            draw.RoundedBox(OGLFramework.UI.Scale(6), v.pos, contentY, contentH, contentH, OGLFramework.UI.ColourScheme.background)
+
+            surface.SetMaterial(v.icon)
+            surface.SetDrawColor(v.color)
+            surface.DrawTexturedRect(v.pos + iconSpacing + OGLFramework.UI.Scale(2), iconY, iconSize, iconSize)
             continue
         end
 
