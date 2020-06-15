@@ -41,7 +41,7 @@ function notification.AddProgress(id, text, frac) end
 
 function notification.Kill(id) end
 
-OGLFramework.UI.RegisterFont("HUD.Notification", "Montserrat Medium", 25)
+OGLFramework.UI.RegisterFont("HUD.Notification", "Montserrat Medium", 22)
 
 hook.Add("HUDPaint", "OGLHUD.Notifications", function()
     local scrw, scrh = ScrW(), ScrH()
@@ -77,7 +77,7 @@ hook.Add("HUDPaint", "OGLHUD.Notifications", function()
         local halfOverlineH = OGLFramework.UI.Scale(3)
         draw.RoundedBox(halfOverlineH, v.x, v.y - halfOverlineH, nw, OGLFramework.UI.Scale(4), OGLFramework.UI.ColourScheme.primary)
 
-        draw.SimpleText(v.text, "OGL.HUD.Notification", v.x + nw - scrw * .005, v.y + nh * .52, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_RIGHT, TEXT_ALIGN_CENTER)
+        draw.SimpleText(v.text, "OGL.HUD.Notification", v.x + nw - scrw * .005, v.y + nh * .47, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_RIGHT, TEXT_ALIGN_CENTER)
 
         local iconSize = nh * .6
 
