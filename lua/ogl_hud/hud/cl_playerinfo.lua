@@ -54,6 +54,15 @@ local modules = {
         end
     },
     {
+        name = "gunlicense",
+        type = "icon",
+        color = color_white,
+        imgurID = "3uLFpU0",
+        getter = function(ply)
+            return ply:getDarkRPVar("HasGunlicense")
+        end
+    },
+    {
         name = "lockdown",
         type = "icon",
         color = OGLFramework.UI.ColourScheme.negative,
