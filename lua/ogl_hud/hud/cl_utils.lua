@@ -6,14 +6,14 @@ surface.CreateFont("OGL.HUD.VoteTitle", {
 })
 
 surface.CreateFont("OGL.HUD.VoteQuestion", {
-    font = "Montserrat",
+    font = "Montserrat Medium",
     size = 24,
     weight = 500,
 })
 
 surface.CreateFont("OGL.HUD.VoteButton", {
-    font = "Montserrat",
-    size = 20,
+    font = "Montserrat Medium",
+    size = 22,
     weight = 500,
 })
 
