@@ -30,7 +30,7 @@ hook.Add("HUDPaint", "OGLHUD.Laws", function()
     surface.SetFont("OGL.HUD.Laws")
     local lawsw, lawsh = surface.GetTextSize(laws)
 
-    local lH = lawsh + scrh * .055
+    local lH = lawsh + scrh * .053
     local lW = math.max(scrw * .04, lawsw + scrw * .015)
 
     lawPos = Lerp(FrameTime() * 10, lawPos, showLaws and pad or -lW * 1.2)
