@@ -130,14 +130,6 @@ function DarkRP.createVote(question, voteType, target, time, callback, excludeVo
     return newvote
 end
 
-concommand.Add("testaa", function()
-    umsg.Start("DoQuestion", player.GetAll()[1])
-        umsg.String("why is this so shit")
-        umsg.String(1)
-        umsg.Float(30)
-    umsg.End()
-end)
-
 function DarkRP.destroyVotesWithEnt(ent)
     for k, v in pairs(Votes) do
         if v.target ~= ent then continue end
