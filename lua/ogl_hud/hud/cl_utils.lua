@@ -1,4 +1,34 @@
 
+surface.CreateFont("OGL.HUD.VoteTitle", {
+    font = "Montserrat SemiBold",
+    size = 26,
+    weight = 500,
+})
+
+surface.CreateFont("OGL.HUD.VoteQuestion", {
+    font = "Montserrat",
+    size = 24,
+    weight = 500,
+})
+
+surface.CreateFont("OGL.HUD.VoteButton", {
+    font = "Montserrat",
+    size = 20,
+    weight = 500,
+})
+
+surface.CreateFont("OGL.HUD.DermaTitle", {
+    font = "Montserrat SemiBold",
+    size = 25,
+    weight = 500,
+})
+
+surface.CreateFont("OGL.HUD.Button", {
+    font = "Montserrat Medium",
+    size = 22,
+    weight = 500,
+})
+
 local hiddenHUDElements = {
     DarkRP_HUD = true,
     DarkRP_EntityDisplay = true,
