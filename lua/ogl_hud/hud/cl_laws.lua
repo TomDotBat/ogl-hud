@@ -1,5 +1,5 @@
 
-local showLaws = false
+local showLaws = true
 
 local nextPress = 0
 hook.Add("PlayerButtonDown", "OGLHUD.ToggleLaws", function(ply, btn)
@@ -12,7 +12,7 @@ hook.Add("PlayerButtonDown", "OGLHUD.ToggleLaws", function(ply, btn)
 end)
 
 OGLFramework.UI.RegisterFont("HUD.LawTitle", "Montserrat SemiBold", 24)
-OGLFramework.UI.RegisterFont("HUD.Laws", "Montserrat SemiBold", 20)
+OGLFramework.UI.RegisterFont("HUD.Laws", "Montserrat Medium", 20)
 
 local lawPos = 0
 
@@ -27,10 +27,11 @@ hook.Add("HUDPaint", "OGLHUD.Laws", function()
     end
     laws = string.Left(laws, #laws-1)
 
+    surface.SetFont("OGL.HUD.Laws")
     local lawsw, lawsh = surface.GetTextSize(laws)
 
-    local lH = lawsh + scrh * .04
-    local lW = math.max(scrw * .04, lawsw + scrw * .01)
+    local lH = lawsh + scrh * .055
+    local lW = math.max(scrw * .04, lawsw + scrw * .015)
 
     lawPos = Lerp(FrameTime() * 10, lawPos, showLaws and pad or -lW * 1.2)
 
