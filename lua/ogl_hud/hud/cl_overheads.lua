@@ -2,11 +2,12 @@
 local renderPlayers = {}
 
 //Micro optimisations
-local ply = LocalPlayer()
 local drawtext = draw.SimpleText
 local playergetall = player.GetAll
 
 hook.Add("Tick", "OGLHUD.Overheads", function()
+    local ply = LocalPlayer()
+
     renderPlayers = {}
 
     local plypos = ply:GetPos()
@@ -25,6 +26,8 @@ local wantedMat
 OGLFramework.UI.Register3D2DFont("HUD.OverheadName", "Montserrat SemiBold", 70)
 
 hook.Add("PostDrawTranslucentRenderables", "OGLHUD.Overheads", function()
+    local ply = LocalPlayer()
+
     local previousClip = DisableClipping(true)
 
     local plyInVehicle = ply:InVehicle()
