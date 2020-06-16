@@ -23,6 +23,18 @@ local typingMat
 local speakingMat
 local wantedMat
 
+OGLFramework.UI.GetImgur("Ro3qcfb", function(mat)
+    typingMat = mat
+end)
+
+OGLFramework.UI.GetImgur("oXvnSBt", function(mat)
+    speakingMat = mat
+end)
+
+OGLFramework.UI.GetImgur("KwWS05U", function(mat)
+    wantedMat = mat
+end)
+
 OGLFramework.UI.Register3D2DFont("HUD.OverheadName", "Montserrat SemiBold", 70)
 
 hook.Add("PostDrawTranslucentRenderables", "OGLHUD.Overheads", function()
@@ -78,6 +90,12 @@ hook.Add("PostDrawTranslucentRenderables", "OGLHUD.Overheads", function()
             local armorw = nw * v:Armor() / 255
             draw.RoundedBox(0, -armorw / 2, 90, armorw, 6, OGLFramework.UI.ColourScheme.primary)
 
+            surface.SetDrawColor(255, 255, 255)
+
+            if v:getDarkRPVar("wanted") then
+                surface.SetDrawColor(OGLFramework.UI.ColourScheme.negative)
+            end
+
             if v:IsTyping() then
                 surface.SetMaterial(typingMat)
             elseif v:IsSpeaking() then
@@ -88,10 +106,8 @@ hook.Add("PostDrawTranslucentRenderables", "OGLHUD.Overheads", function()
                 cam.End3D2D()
                 continue
             end
-
             local iconSize = 140
 
-            surface.SetDrawColor(255, 255, 255)
             surface.DrawTexturedRect(-iconSize / 2, -150, iconSize, iconSize)
         cam.End3D2D()
     end
