@@ -108,7 +108,7 @@ local function openMenu(setDoorOwnerAccess, doorSettingsAccess)
     Frame:SetTitle("")
 
     function Frame:Paint(w, h)
-        draw.RoundedBox(4, 0, 0, w, h, OGLFramework.UI.ColourScheme.backgroundDark)
+        draw.RoundedBox(4, 0, 0, w, h, OGLFramework.UI.ColourScheme.backgroundDarkerish)
 
         draw.RoundedBoxEx(4, 0, 0, w, 36, OGLFramework.UI.ColourScheme.primary, true, true, false, false)
 
