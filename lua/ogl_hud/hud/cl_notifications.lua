@@ -89,5 +89,3 @@ hook.Add("HUDPaint", "OGLHUD.Notifications", function()
         surface.DrawTexturedRect(iconOffX + v.x, iconOff + v.y + nh * .05, iconSize, iconSize)
     end
 end)
-
-notification.AddLegacy("asdasdasdad", NOTIFY_ERROR, 10)
