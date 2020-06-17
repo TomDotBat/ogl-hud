@@ -2,8 +2,6 @@
 local notifications = {}
 
 local frametime = FrameTime
-local padding = OGLFramework.UI.Scale(10)
-local spacing = OGLFramework.UI.Scale(10)
 
 local imgurIds = {
     [NOTIFY_CLEANUP] = "JDcSoBi",
@@ -44,6 +42,9 @@ function notification.Kill(id) end
 OGLFramework.UI.RegisterFont("HUD.Notification", "Montserrat Medium", 22)
 
 hook.Add("HUDPaint", "OGLHUD.Notifications", function()
+    local padding = OGLFramework.UI.Scale(10)
+    local spacing = OGLFramework.UI.Scale(10)
+
     local scrw, scrh = ScrW(), ScrH()
 
     local offX = scrw - padding
@@ -75,7 +76,7 @@ hook.Add("HUDPaint", "OGLHUD.Notifications", function()
         draw.RoundedBoxEx(OGLFramework.UI.Scale(6), v.x, v.y, nw, nh, OGLFramework.UI.ColourScheme.backgroundDarkerish, false, false, true, true)
 
         local halfOverlineH = OGLFramework.UI.Scale(3)
-        draw.RoundedBox(halfOverlineH, v.x, v.y - halfOverlineH, nw, OGLFramework.UI.Scale(4), OGLFramework.UI.ColourScheme.primary)
+        draw.RoundedBoxEx(halfOverlineH, v.x, v.y - halfOverlineH, nw, OGLFramework.UI.Scale(4), OGLFramework.UI.ColourScheme.primary, true, true)
 
         draw.SimpleText(v.text, "OGL.HUD.Notification", v.x + nw - scrw * .005, v.y + nh * .47, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_RIGHT, TEXT_ALIGN_CENTER)
 
@@ -88,3 +89,5 @@ hook.Add("HUDPaint", "OGLHUD.Notifications", function()
         surface.DrawTexturedRect(iconOffX + v.x, iconOff + v.y + nh * .05, iconSize, iconSize)
     end
 end)
+
+notification.AddLegacy("asdasdasdad", NOTIFY_ERROR, 10)
