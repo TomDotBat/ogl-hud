@@ -50,7 +50,7 @@ local modules = {
         imgurID = "wT2iKhJ",
         actualValue = 0,
         getter = function(ply)
-            return ply:getDarkRPVar("money")
+            return ply:GetGPoints()
         end
     },
     {
