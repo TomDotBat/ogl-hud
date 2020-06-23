@@ -121,5 +121,3 @@ hook.Add("Initialize", "FLATHUDHideTypeIndicator",function()
     hook.Remove("PostPlayerDraw", "DarkRP_ChatIndicator")
     hook.Remove("CreateClientsideRagdoll", "DarkRP_ChatIndicator")
 end)
-
-hook.Remove("PostDrawTranslucentRenderables", "FLATHUDShowOverhead")
