@@ -68,7 +68,13 @@ hook.Add("PostDrawTranslucentRenderables", "OGLHUD.Overheads", function()
         end
 
         cam.Start3D2D(pos, plyInVehicle and Angle(0,ply:GetVehicle():GetAngles().y + eyeAngs.y - 90,90) or Angle(0,eyeAngs.y - 90,90), 0.06)
-            local rank = "G" .. (v.GetGRank and tostring(v:GetGRank()) or "0")
+            local rank
+            local rankLvl = v.GetGRank and v:GetGRank() or 0
+
+            if rankLvl > 1 then
+                rank = "G" .. tostring(rankLvl)
+            end
+
             local name = v:Name()
 
             surface.SetFont("OGL.HUD.OverheadName")
