@@ -22,10 +22,15 @@ hook.Add("HUDPaint", "OGLHUD.Laws", function()
     local pad = OGLFramework.UI.Scale(10)
 
     local laws = ""
-    for k,v in ipairs(DarkRP.getLaws()) do
+    local lawTbl = DarkRP.getLaws()
+    for k,v in ipairs(lawTbl) do
         laws = laws .. k .. ". " .. v .. "\n"
     end
     laws = string.Left(laws, #laws-1)
+
+    if #lawTbl < 1 then
+        laws = "There are no laws set currently."
+    end
 
     surface.SetFont("OGL.HUD.Laws")
     local lawsw, lawsh = surface.GetTextSize(laws)
