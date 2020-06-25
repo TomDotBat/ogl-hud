@@ -2,6 +2,7 @@
 local agenda = false
 local agendaText = ""
 
+local scrw, scrh = 0, 0
 local ply = LocalPlayer()
 local frametime = FrameTime
 local lerp = Lerp
