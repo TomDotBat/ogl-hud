@@ -1,6 +1,7 @@
 
 local function loadAddon()
     if CLIENT then
+        OGLHUD = {}
         OGLFramework.LoadDirectoryDelayed("ogl_hud")
         return
     end
