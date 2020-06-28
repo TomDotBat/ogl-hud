@@ -23,6 +23,8 @@ hook.Add("Initialize", "OGLHUD.HideDefaultScoreboard", hideDefault)
 hook.Add("OnReloaded", "OGLHUD.HideDefaultScoreboard", hideDefault)
 
 hook.Add("ScoreboardShow", "OGLHUD.ShowScoreboard", function()
+    if OGLHUD.Scoreboard and OGLHUD.Scoreboard.Closing then return end
+
     if not IsValid(OGLHUD.Scoreboard) then
         OGLHUD.Scoreboard = vgui.Create("OGLScoreboard")
     end
@@ -36,7 +38,8 @@ end)
 hook.Add("ScoreboardHide", "OGLHUD.HideScoreboard", function()
     if not (OGLHUD.Scoreboard or IsValid(OGLHUD.Scoreboard)) then return end
 
-    OGLHUD.Scoreboard:AlphaTo(0, 0.1, 0, function()
-        OGLHUD.Scoreboard:Remove()
+    OGLHUD.Scoreboard.Closing = true
+    OGLHUD.Scoreboard:AlphaTo(0, 0.1, 0, function(anim, pnl)
+        pnl:Remove()
     end)
 end)
