@@ -120,7 +120,7 @@ hook.Add("HUDPaint", "OGLHUD.PlayerInfo", function()
 
         if v.type == "bar" then
             v.noDraw = false
-            v.value = Lerp(FrameTime() * 5, v.value, v.getter(ply))
+            v.value = Lerp(FrameTime() * 5, v.value, v.getter(ply) or 0)
             v.max = v.name == "armour" and 255 or ply:GetMaxHealth()
 
             if v.value > v.max then v.max = v.value end
@@ -132,7 +132,7 @@ hook.Add("HUDPaint", "OGLHUD.PlayerInfo", function()
 
             barW = barW + statBarW + spacing
         elseif v.type == "text" then
-            v.value = v.getter(ply)
+            v.value = v.getter(ply) or ""
 
             v.width = iconSize + iconSpacing * 3 + surface.GetTextSize(v.value)
             barW = barW + v.width + spacing
@@ -142,7 +142,7 @@ hook.Add("HUDPaint", "OGLHUD.PlayerInfo", function()
 
             barW = barW + contentH + spacing
         elseif v.type == "num" then
-            v.actualValue = Lerp(FrameTime() * 5, v.actualValue, v.getter(ply))
+            v.actualValue = Lerp(FrameTime() * 5, v.actualValue, v.getter(ply) or 0)
             v.value = math.Round(v.actualValue)
 
             if v.formatMoney then
