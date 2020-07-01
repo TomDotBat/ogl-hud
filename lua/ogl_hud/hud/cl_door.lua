@@ -6,7 +6,7 @@ local opposite = Angle(0,180,0)
 local drawtext = draw.SimpleText
 local stringreplace = string.Replace
 
-OGLFramework.UI.Register3D2DFont("HUD.DoorLarge", "Montserrat SemiBold", 160)
+OGLFramework.UI.Register3D2DFont("HUD.DoorLarge", "Montserrat SemiBold", 140)
 OGLFramework.UI.Register3D2DFont("HUD.DoorMedium", "Montserrat Medium", 95)
 OGLFramework.UI.Register3D2DFont("HUD.DoorSmall", "Montserrat Medium", 65)
 
