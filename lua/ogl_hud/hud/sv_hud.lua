@@ -31,7 +31,7 @@ hook.Add("playerWanted", "OGLHUD.Want", function(ply, actor, reason)
         10
     )
 
-    return true
+   -- return true
 end)
 
 hook.Add("playerUnWanted", "OGLHUD.UnWant", function(ply, actor)
@@ -42,7 +42,7 @@ hook.Add("playerUnWanted", "OGLHUD.UnWant", function(ply, actor)
         ply
     )
 
-    return true
+   -- return true
 end)
 
 
@@ -58,7 +58,7 @@ hook.Add("playerWarranted", "OGLHUD.Warrant", function(ply, warranter, reason)
         10
     )
 
-    return true
+    --return true
 end)
 
 local isLockdown = false
