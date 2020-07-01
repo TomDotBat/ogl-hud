@@ -18,7 +18,12 @@ function PANEL:RefreshPlayers()
     self:Clear()
     table.Empty(self.Players)
 
+    local playerList = {}
     for k,v in ipairs(player.GetAll()) do
+        playerList[v:Name()] = v
+    end
+
+    for k,v in SortedPairs(playerList) do
         self:AddPlayer(v)
     end
 end
