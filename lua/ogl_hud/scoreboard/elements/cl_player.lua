@@ -99,10 +99,10 @@ function PANEL:PerformLayout(w, h)
     self.CopyIdButton:SetSize(w * .15, h)
 end
 
-OGLFramework.UI.RegisterFont("Scoreboard.PlayerName", "Montserrat Medium", 26)
+OGLFramework.UI.RegisterFont("Scoreboard.PlayerName", "Montserrat Medium", 23)
 OGLFramework.UI.RegisterFont("Scoreboard.PlayerRank", "Montserrat Medium", 16)
 OGLFramework.UI.RegisterFont("Scoreboard.ColumnName", "Montserrat Medium", 17)
-OGLFramework.UI.RegisterFont("Scoreboard.ColumnStat", "Montserrat Medium", 22)
+OGLFramework.UI.RegisterFont("Scoreboard.ColumnStat", "Montserrat Medium", 21)
 
 function PANEL:Paint(w, h)
     draw.RoundedBox(8, 0, 0, w, h, OGLFramework.UI.ColourScheme.backgroundDark)
@@ -121,25 +121,25 @@ function PANEL:Paint(w, h)
         draw.SimpleText(name, "OGL.Scoreboard.PlayerName", x, h * .46, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
     end
 
-    x = x + w * .2
+    x = x + w * .26
 
     textPad = h * .15
     textBottom = h - textPad
 
     draw.SimpleText("JOB", "OGL.Scoreboard.ColumnName", x, textPad, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER)
-    draw.SimpleText(self.Job, "OGL.Scoreboard.ColumnStat", x, textBottom, self.JobColor, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM)
+    draw.SimpleText(OGLFramework.UI.EllipsesText(self.Job, OGLFramework.UI.Scale(w * .17), "OGL.Scoreboard.ColumnStat"), "OGL.Scoreboard.ColumnStat", x, textBottom, self.JobColor, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM)
 
-    x = x + w * .13
+    x = x + w * .14
 
     draw.SimpleText("MONEY", "OGL.Scoreboard.ColumnName", x, textPad, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER)
     draw.SimpleText(DarkRP.formatMoney(self.Money), "OGL.Scoreboard.ColumnStat", x, textBottom, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM)
 
-    x = x + w * .12
+    x = x + w * .1
 
     draw.SimpleText("K:D", "OGL.Scoreboard.ColumnName", x, textPad, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER)
     draw.SimpleText(self.KDRatio, "OGL.Scoreboard.ColumnStat", x, textBottom, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM)
 
-    x = x + w * .13
+    x = x + w * .11
 
     draw.SimpleText("PLAYTIME", "OGL.Scoreboard.ColumnName", x, textPad, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER)
     draw.SimpleText(self.Playtime, "OGL.Scoreboard.ColumnStat", x, textBottom, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER, TEXT_ALIGN_BOTTOM)
