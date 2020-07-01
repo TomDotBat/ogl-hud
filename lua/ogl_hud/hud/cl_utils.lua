@@ -7,7 +7,7 @@ surface.CreateFont("OGL.HUD.VoteTitle", {
 
 surface.CreateFont("OGL.HUD.VoteQuestion", {
     font = "Montserrat Medium",
-    size = 24,
+    size = 20,
     weight = 500,
 })
 
