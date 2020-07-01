@@ -64,7 +64,7 @@ local function MsgDoVote(msg)
         draw.RoundedBox( 4, 0, 0, w, h, OGLFramework.UI.ColourScheme.backgroundDarkerish )
         draw.RoundedBoxEx( 4, 0, 0, w, h*.15, OGLFramework.UI.ColourScheme.primary, true, true, false, false )
         draw.SimpleText( "VOTE", "OGL.HUD.VoteTitle", w*0.5, h*0.004, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER )
-        draw.DrawText(self.question, "OGL.HUD.VoteQuestion", w*0.5, h*0.18, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER)
+        draw.DrawText(OGLFramework.UI.WrapText(self.question, w*.9, "OGL.HUD.VoteQuestion"), "OGL.HUD.VoteQuestion", w*0.5, h*0.18, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER)
         draw.DrawText(string.Replace("This vote expires in\n%s seconds", "%s", math.Round(OldTime + timeleft - CurTime())),  "OGL.HUD.VoteQuestion", w*0.5, h*0.52, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER)
     end
 
@@ -172,7 +172,7 @@ local function MsgDoQuestion(msg)
         draw.RoundedBox( 4, 0, 0, w, h, OGLFramework.UI.ColourScheme.backgroundDarkerish )
         draw.RoundedBoxEx( 4, 0, 0, w, h*.15, OGLFramework.UI.ColourScheme.primary, true, true, false, false )
         draw.SimpleText( "QUESTION", "OGL.HUD.VoteTitle", w*0.5, h*0.004, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER )
-        draw.DrawText(self.question, "OGL.HUD.VoteQuestion", w*0.5, h*0.18, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER)
+        draw.DrawText(OGLFramework.UI.WrapText(self.question, w*.9, "OGL.HUD.VoteQuestion"), "OGL.HUD.VoteQuestion", w*0.5, h*0.18, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER)
         draw.DrawText(string.Replace("This expires in\n%s seconds", "%s", math.Round(OldTime + timeleft - CurTime())),  "OGL.HUD.VoteQuestion", w*0.5, h*0.52, OGLFramework.UI.ColourScheme.lightText, TEXT_ALIGN_CENTER)
     end
     
