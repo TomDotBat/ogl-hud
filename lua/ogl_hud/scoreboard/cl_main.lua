@@ -36,7 +36,7 @@ hook.Add("ScoreboardShow", "OGLHUD.ShowScoreboard", function()
 end)
 
 hook.Add("ScoreboardHide", "OGLHUD.HideScoreboard", function()
-    if not (OGLHUD.Scoreboard or IsValid(OGLHUD.Scoreboard)) then return end
+    if not IsValid(OGLHUD.Scoreboard) then return end
 
     OGLHUD.Scoreboard.Closing = true
     OGLHUD.Scoreboard:AlphaTo(0, 0.1, 0, function(anim, pnl)
